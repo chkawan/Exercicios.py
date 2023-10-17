@@ -8,4 +8,7 @@ valor_final = valor_inicial
 for _ in range(periodo):
     valor_final += valor_final * (taxa_juros / 100)
 
-print("Valor final do investimento: R$", valor_final: .2f)
+# Arredondar o valor final para duas casas decimais
+valor_final = round(valor_final, 2)
+
+print("Valor final do investimento: R$ {:.2f}".format(valor_final))
