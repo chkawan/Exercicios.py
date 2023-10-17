@@ -3,7 +3,7 @@ saldo = valor
 
 if valor > 0:
     #TODO: Imprimir a mensagem de sucesso, formatando o saldo atual (vide Exemplos).
-   print(f"Deposito realizado com sucesso! Saldo atual: R${saldo}")
+   print(f"Deposito realizado com sucesso! Saldo atual: R${saldo: .2f}")
    
 elif valor == 0:
    #TODO: Imprimir a mensagem de valor inválido.
