@@ -1,6 +1,6 @@
 class User(val id: Int, val name: String)
 
-object UserManager {
+class UserManager private constructor() {
     private val users = mutableListOf<User>()
 
     fun addUser(name: String) {
@@ -12,7 +12,18 @@ object UserManager {
     fun listUsers() {
         println("List of Users:")
         for (user in users) {
-            println("ID: ${user.id}, Name: ${user.name}")
+            println("${user.id} - ${user.name}")
+        }
+    }
+
+    companion object {
+        private var instance: UserManager? = null
+
+        fun getInstance(): UserManager {
+            if (instance == null) {
+                instance = UserManager()
+            }
+            return instance as UserManager
         }
     }
 }
@@ -21,11 +32,13 @@ fun main() {
     println("Enter the number of users:")
     val quantity = readLine()?.toIntOrNull() ?: 0
 
+    val userManager = UserManager.getInstance()
+
     println("Enter the name of each user:")
     for (i in 1..quantity) {
         val name = readLine() ?: ""
-        UserManager.addUser(name)
+        userManager.addUser(name)
     }
 
-    UserManager.listUsers()
+    userManager.listUsers()
 }
